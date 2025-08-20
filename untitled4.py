@@ -136,13 +136,18 @@ print(f"🔎 Root Mean Squared Error (RMSE): {rmse:.2f}")
 print(f"🔎 R-squared (R²): {r2:.2f}")
 
 import matplotlib.pyplot as plt
+import streamlit as st
 
-plt.figure(figsize=(10,6))
-plt.plot(y_test.values, label='Actual Sales', marker='o')
-plt.plot(y_pred, label='Predicted Sales', marker='x')
-plt.title('Actual vs Predicted Sales')
-plt.xlabel('Test Sample Index')
-plt.ylabel('Sales')
-plt.legend()
-plt.grid(True)
-plt.show()
+# Tạo figure và axes
+fig, ax = plt.subplots(figsize=(10,6))
+
+ax.plot(y_test.values, label='Actual Sales', marker='o')
+ax.plot(y_pred, label='Predicted Sales', marker='x')
+ax.set_title('Actual vs Predicted Sales')
+ax.set_xlabel('Test Sample Index')
+ax.set_ylabel('Sales')
+ax.legend()
+ax.grid(True)
+
+# Hiển thị lên Streamlit
+st.pyplot(fig)
